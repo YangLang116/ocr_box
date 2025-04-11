@@ -70,9 +70,6 @@ class MainWindow(QMainWindow):
 
         # 应用创建后检查Tesseract状态并记录日志
         self.init_tesseract()
-            
-        # 检查图像处理依赖项
-        self.check_dependencies()
 
     def init_tesseract(self):
         """初始化Tesseract设置"""
@@ -325,45 +322,6 @@ class MainWindow(QMainWindow):
             self.log("OCR设置已重置为默认值")
         except Exception as e:
             self.log_error(f"重置OCR设置出错: {str(e)}")
-    
-    def check_dependencies(self):
-        """检查图像处理依赖项"""
-        try:
-            # 检查OpenCV
-            try:
-                import cv2
-                self.log("已检测到OpenCV库")
-            except ImportError:
-                self.log_error("未检测到OpenCV库，图像预处理功能可能无法正常工作")
-                self.log("请通过pip install opencv-python安装OpenCV")
-            
-            # 检查NumPy
-            try:
-                import numpy
-                self.log("已检测到NumPy库")
-            except ImportError:
-                self.log_error("未检测到NumPy库，图像预处理功能可能无法正常工作")
-                self.log("请通过pip install numpy安装NumPy")
-                
-            # 检查PIL/Pillow
-            try:
-                from PIL import Image, ImageEnhance
-                self.log("已检测到PIL/Pillow库")
-            except ImportError:
-                self.log_error("未检测到PIL/Pillow库，OCR功能可能无法正常工作")
-                self.log("请通过pip install pillow安装Pillow")
-                
-            # 检查pytesseract
-            try:
-                import pytesseract
-                self.log("已检测到pytesseract库")
-            except ImportError:
-                self.log_error("未检测到pytesseract库，OCR功能无法工作")
-                self.log("请通过pip install pytesseract安装pytesseract")
-        except Exception as e:
-            self.log_error(f"检查依赖项时出错: {str(e)}")
-
-    
 
     def refresh_language_list(self):
         """刷新语言列表"""
