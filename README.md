@@ -107,4 +107,4 @@ python setup.py sdist bdist_wheel
 
 - **models**: 包含核心功能模块, 如OCR处理、透明窗口等
 - **ui**: 包含用户界面相关模块
-- **utils**: 包含辅助工具, 如Tesseract查找、图标创建等
+- **utils**: 包含辅助工具, 如Tesseract查找等
